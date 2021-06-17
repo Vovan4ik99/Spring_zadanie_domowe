@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl">
+<head th:insert="~{fragments/header :: header}"></head>
+<body>
+
+
+<div class="container">
+    <p>Lista <strong>Nauczyceli:</strong>  (szczegóły przy kliknięciu na nauczyciela)</p>
+    <p th:each = "teacher: ${teachers}">
+        <a th:href="'/teachers/' + ${teacher.getId()}"><span th:text = "${teacher.getName()}"></span> <span th:text = "${teacher.getSurname()}"></span></a>
+    </p>
+
+</div>
+
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pl">
+<head th:insert="~{fragments/header :: header}"></head>
+<body>
+
+<div class="container">
+  <p><strong>Wybierz liste:</strong></p>
+  <a href="students">Lista studentow</a><br>
+  <a href="teachers">Lista nauczycieli</a>
+</div>
+
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+</html>
