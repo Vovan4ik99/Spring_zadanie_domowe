@@ -1,6 +1,9 @@
 package pl.cansoft.java_zadanie_domowe.controllers.rest;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 import pl.cansoft.java_zadanie_domowe.models.Teacher;
 import pl.cansoft.java_zadanie_domowe.services.teacher.TeacherService;
@@ -14,6 +17,21 @@ import java.util.List;
 public class TeacherRestController {
 
     final TeacherService teacherService;
+
+    @GetMapping("search")
+    public Page<Teacher> getTeachersBySearchEngine(
+            @RequestParam(value = "name", required = false) String name,
+            @RequestParam(value = "surname", required = false) String surname,
+            @PageableDefault(size = 20) Pageable pageable
+    ) {
+       return teacherService.getTeachersBySearchEngine(name, surname, pageable);
+
+    }
+
+    @GetMapping("student/{studentId}")
+    public Page<Teacher> getTeachersByStudent(@PathVariable Long studentId, Pageable pageable) {
+        return teacherService.getTeachersByStudent(studentId, pageable);
+    }
 
     @GetMapping
     public List<Teacher> getTeachers() {

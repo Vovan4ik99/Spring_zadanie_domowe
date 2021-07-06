@@ -28,7 +28,7 @@ public abstract class PersonDate {
     @NotBlank(message = "Nazwisko jest wymagane!")
     private String surname;
 
-    @Min(18)
+    @Min(value= 18, message = "Wiek musi być więcej 18 lat")
     @NotNull(message = "Wiek jest wymagany!")
     private int age;
 
